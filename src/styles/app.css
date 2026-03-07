@@ -1,0 +1,374 @@
+html,
+body,
+#root {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Inter, Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #0f1115;
+  color: #e7ebf3;
+}
+
+.app-shell {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: #0f1115;
+}
+
+.toolbar {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 0 16px;
+  border-bottom: 1px solid #232833;
+  background: #171b22;
+}
+
+.toolbar-title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.toolbar-subtitle {
+  font-size: 12px;
+  color: #94a3b8;
+}
+
+.toolbar-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.main-layout {
+  flex: 1;
+  min-height: 0;
+  display: grid;
+  grid-template-columns: 220px 1fr 300px;
+}
+
+.left-panel,
+.right-panel {
+  padding: 16px;
+  background: #151922;
+  overflow: auto;
+}
+
+.left-panel {
+  border-right: 1px solid #232833;
+}
+
+.right-panel {
+  border-left: 1px solid #232833;
+}
+
+.center-panel {
+  min-width: 0;
+  min-height: 0;
+  display: grid;
+  grid-template-rows: 1fr 320px;
+}
+
+.canvas-panel {
+  min-width: 0;
+  min-height: 0;
+  position: relative;
+}
+
+.canvas-shell {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.canvas-overlay-controls {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px;
+  border: 1px solid #334155;
+  border-radius: 10px;
+  background: rgba(15, 20, 29, 0.92);
+  backdrop-filter: blur(6px);
+}
+
+.canvas-overlay-controls button {
+  width: auto;
+  min-width: 44px;
+  padding: 8px 10px;
+}
+
+.canvas-overlay-controls span {
+  min-width: 48px;
+  text-align: center;
+  color: #cbd5e1;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.schematic-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  background: #10141b;
+  touch-action: none;
+}
+
+.grid-line {
+  stroke: #1c2431;
+  stroke-width: 1;
+}
+
+.component-hitbox {
+  fill: transparent;
+  stroke: transparent;
+}
+
+.component-hitbox.selected {
+  stroke: #eab308;
+  stroke-dasharray: 6 4;
+}
+
+.symbol-line,
+.symbol-outline {
+  fill: none;
+  stroke: #cbd5e1;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.symbol-fill {
+  fill: #cbd5e1;
+  stroke: #cbd5e1;
+  stroke-width: 2;
+  stroke-linejoin: round;
+}
+
+.component-label {
+  fill: #f4f7fb;
+  font-size: 12px;
+  user-select: none;
+  pointer-events: none;
+}
+
+.small-label {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.pin-dot {
+  fill: #38bdf8;
+  stroke: #e0f2fe;
+  stroke-width: 1.5;
+}
+
+.pin-dot.active {
+  fill: #f59e0b;
+  stroke: #fde68a;
+}
+
+.wire-line {
+  fill: none;
+  stroke: #7dd3fc;
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.palette-list,
+.inspector-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+button,
+input,
+select {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #334155;
+  padding: 10px 12px;
+  background: #111827;
+  color: #e5e7eb;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:hover {
+  background: #172033;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.panel-help {
+  margin-top: 12px;
+  color: #94a3b8;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.wave-panel {
+  border-top: 1px solid #232833;
+  background: #0f141d;
+  padding: 12px 16px 16px;
+  overflow: auto;
+}
+
+.wave-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.trace-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.toggle {
+  width: auto;
+  min-width: 90px;
+}
+
+.toggle.active {
+  border-color: #38bdf8;
+}
+
+.trace-select {
+  max-width: 240px;
+  margin-bottom: 10px;
+}
+
+.wave-svg {
+  width: 100%;
+  height: 240px;
+  display: block;
+}
+
+.wave-bg {
+  fill: #0a0e15;
+  stroke: #334155;
+}
+
+.wave-grid {
+  stroke: #1f2937;
+  stroke-width: 1;
+}
+
+.wave-line {
+  fill: none;
+  stroke: #38bdf8;
+  stroke-width: 2.2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+
+.wave-meta {
+  margin-top: 8px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  color: #cbd5e1;
+  font-size: 13px;
+}
+
+.sim-raw {
+  margin-top: 10px;
+  padding: 12px;
+  border: 1px solid #233042;
+  border-radius: 10px;
+  background: #0a0f17;
+  color: #cbd5e1;
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+
+.sim-error {
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #7f1d1d;
+  background: #2b1215;
+  color: #fecaca;
+}
+
+.inspector-root {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inspector-divider {
+  height: 1px;
+  background: #273142;
+}
+
+p,
+h3 {
+  margin-top: 0;
+}
+
+.schematic-canvas.dragging-canvas {
+  cursor: grabbing;
+}
+
+.schematic-canvas,
+.component-hitbox,
+.pin-dot {
+  user-select: none;
+}
+
+.scope-controls-grid {
+  display: grid;
+  grid-template-columns: minmax(180px, 1fr) minmax(140px, 180px) minmax(140px, 180px);
+  gap: 10px;
+  align-items: end;
+  margin-bottom: 12px;
+}
+
+.scope-field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.axis-label {
+  fill: #94a3b8;
+  font-size: 11px;
+}
+
+.dragging-canvas {
+  cursor: grabbing;
+}
+
+.panning-canvas {
+  cursor: move;
+}
